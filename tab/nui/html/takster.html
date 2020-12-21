@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+        @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+
+    [class*="fontawesome-"]:before {
+      font-family: 'FontAwesome', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      border: 0px solid white;
+    }
+
+    body {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      font-family: sans-serif;
+      overflow: hidden;
+      /* margin: 0; */
+      display: flex;
+      flex-direction: column;
+      margin: 0px;
+      padding: 0px;
+      border: 0px solid white;
+    }
+
+    main .sidebar {
+      background: dodgerblue;
+      min-width: 180px;
+      max-width: 250px;
+      margin-bottom: 0;
+      color: whitesmoke;
+      text-shadow: 1px 1px #0d0d0d;
+      overflow: auto;
+      height: 600px;
+    }
+
+    main .sidebar ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    main .sidebar li {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border-bottom: 2px solid #2F2F2F;
+    }
+
+    main .sidebar li:hover {
+      border-right: .5rem solid #81A4D4;
+      box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.4);
+    }
+
+    main .sidebar a {
+      color: whitesmoke;
+      display: block;
+      padding: 1.5em .2em;
+      text-decoration: none;
+      text-align: center;
+      font-size: 1.2em;
+      -webkit-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    main .sidebar a:before {
+      content: "SideBar";
+    }
+
+    main .sidebar a:hover {
+      color: #81A4D4;
+      margin-left: 1rem;
+    }
+
+    main {
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+
+    main .sidebar {
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+    }
+
+    main .sidebar ul li {
+      margin: 0;
+      list-style-type: none;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    main .sidebar ul li:last-child {
+      border-bottom: none;
+    }
+
+    main li {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    main .sidebar a:before {
+      content: "";
+    }
+
+    #all-content {
+      flex: 1;
+    }
+
+    .info {
+      background-color: #294860;
+      border-radius: 20px;
+      /* The border-radius gives rounded corners.*/
+      color: white;
+      padding: 10px;
+      margin: 10px auto;
+    }
+
+    h2 {
+      margin: 10px;
+    }
+
+    .info {
+      background-color: #DFEAF1;
+      padding: 4px;
+      margin: 10px;
+      border-radius: 4px;
+      color: black;
+    }
+
+    .info-title {
+      font-size: 3em;
+      margin: 8px;
+      text-align: center;
+      color: #294860;
+    }
+
+    .info-description {
+      font-weight: lighter;
+      /* this makes the font a bit less dark */
+      font-size: 1.3em;
+      margin: 6px;
+    }
+
+    .nav-myframe {
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 17px;
+            font-weight: 300;
+            color: #272727;
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 127px;
+        }
+
+        .politi {
+            font-family: 'Lato', sans-serif;
+            font-size: 40px;
+            display: inline-block;
+            font-weight: 700;
+            color: #272727;
+            text-align: center;
+            margin-left: 127px;
+        }
+
+        .nav-myframe:hover {
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 17px;
+            font-weight: 300;
+            color: #272727;
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 127px;
+            border-bottom: 1px #272727 solid;
+        }
+
+        #tab-container {
+            display: flex;
+            flex: 1;
+            top: 20px;
+        }
+        .tab {
+            background-color: white;
+            overflow: scroll;
+            background-size: 100% 100%;
+            position: relative;
+            border-radius: 3px;
+            min-height:100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        header {
+            box-sizing: border-box;
+            text-align: center;
+            background-color: white;
+            display: inline-block;
+            padding: 25px;
+            font-family: 'Saira Stencil One', cursive;
+            font-size: 35px;
+            text-align: center;
+            font-weight: 100;
+            border-bottom: rgba(146, 146, 146, 0.3) 1px solid;
+        }
+
+        header ul {
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0px;
+            position: relative;
+            width: 100%;
+        }
+
+        header ul:before {
+            content: '';
+            left: 0;
+            position: absolute;
+            transform: rotatex(45deg);
+            width: 100%;
+            z-index: 0;
+            height: 100%;
+        }
+
+        header li {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+        }
+
+        header li:before {
+            border-radius: 12px;
+            display: block;
+            float: left;
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            /* top: -48px; */
+            visibility: hidden;
+            width: auto;
+            z-index: 0;
+            box-sizing: border-box;
+            opacity: 0%;
+        }
+
+
+        header li:hover:before {
+            opacity: 1;
+            top: -38px;
+            visibility: visible;
+        }
+
+        .jump {
+            -webkit-animation: JUMP 600ms 2 cubic-bezier(0.4, 0.01, 0.6, 0.99);
+        }
+
+        header img:hover, header i:hover {
+            transform: scale(1.2);
+        }
+
+        .placeholder {
+            flex: 0;
+        }
+
+        #iframe:not(.empty) + .placeholder {
+            display:none;
+        }   
+        .foot {
+            background-color:rgba(177, 177, 177, 0.3);
+            width: 100%;
+            max-width: 100%;
+            height: 40px;
+            border-top: 1px black solid;
+            display: inline-block;
+        }
+        .foot2 {
+            background-color:rgba(177, 177, 177, 0.3);
+            width: 100%;
+            height: 368px;
+            padding-left: 10px;
+            font-size: 20px;
+            font-weight: 300;
+            font-family: 'Lato', sans-serif;
+            color: black;
+        }
+
+        .foot .bode2 {
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            display: inline-block;
+            padding-left: 10px;
+        }
+
+        .operator {
+            padding: 6px;
+            padding-left: 13px;
+            color: rgb(226, 226, 226);
+            font-weight: 700;
+            padding-right: 13px;
+            margin: 0px;
+            background-color: #017aff;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .foot .bode {
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            padding-left: 70px!important;
+            padding:15px;
+            display: inline-block;
+        }
+
+        #lig {
+            padding: 6px;
+            padding-left: 13px;
+            color: rgb(226, 226, 226);
+            font-weight: 700;
+            padding-right: 13px;
+            margin: 0px;
+            background-color: #006d48;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #clear {
+            padding: 6px;
+            padding-left: 13px;
+            color: rgb(226, 226, 226);
+            font-weight: 700;
+            padding-right: 13px;
+            margin: 0px;
+            background-color: #b52400!important;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .knap {
+            text-align: center;
+        }
+
+        .listh {
+            background-color: rgb(255, 255, 255);
+            margin: 0px;
+            padding: 0px;
+            border-top: solid 1px rgba(146, 146, 146, 0.3);
+            
+            
+        }
+
+        .listh .grund {
+            background-color:rgb(255, 255, 255);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 300px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .listh .pris {
+            background-color:rgb(255, 255, 255);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 150px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .listh .dage {
+            background-color:rgb(255, 255, 255);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 150px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+        
+        .listh .desc {
+            background-color:rgb(255, 255, 255);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 440px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+        .listh .para {
+            background-color:rgb(255, 255, 255);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 90px;
+            text-align: center;
+            display: inline-block;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+        }
+
+        .list {
+            background-color: rgb(231, 231, 231);
+            margin: 0px;
+            padding: 0px;
+            
+        }
+
+        .list .grund {
+            background-color:rgb(231, 231, 231);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 300px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .list .pris {
+            background-color:rgb(231, 231, 231);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 150px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .list .dage {
+            background-color:rgb(231, 231, 231);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 150px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+        
+        .list .desc {
+            background-color:rgb(231, 231, 231);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 440px;
+            text-align: center;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .list .plus {
+            background-color:rgb(231, 231, 231);
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            width: 35px;
+            text-align: center;
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .listh .plus {
+            background-color:rgb(255, 255, 255);
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            width: 35px;
+            text-align: center;
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .list .para {
+            background-color:rgb(231, 231, 231);
+            padding: 15px;
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            width: 90px;
+            text-align: center;
+            display: inline-block;
+            border-right: solid 1px rgba(146, 146, 146, 0.3);
+            margin: 0px;
+        }
+
+        .indhold {
+            margin: 0px;
+            padding: 0px;
+            max-width: 1280px;
+            max-height: 700px;
+            overflow: scroll;
+        }
+
+        .indhold::-webkit-scrollbar {
+        display: none;
+        }
+
+        .foot .straf {
+            color: black;
+            font-family: 'Lato', sans-serif;
+            padding-left: 200px!important;
+            font-size: 20px;
+            font-weight: 300;
+            padding:15px;
+            display: inline-block;
+        }
+
+        .foot .klip {
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            padding-left: 70px!important;
+            padding-right: 70px!important;
+            font-weight: 300;
+            padding:15px;
+            display: inline-block;
+        } 
+
+        .made {
+            background-color: transparent!important;
+            margin-left: 1000px;
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            display: inline-block;
+            color:#272727;
+            width: 300px;
+        }
+  </style>
+</head>
+
+<body>
+  <div class="indhold">
+    <div class="list">
+        <span class="para">GL. §1</span>
+        <span class="grund">Vold</span>
+        <span class="pris">17.500,- DKK</span>
+        <span class="dage">10 måneder</span>
+        <span class="desc">Vold mod en civil borger</span>
+        <button type="button" id="17500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §1.2</span>
+        <span class="grund">Grov vold</span>
+        <span class="pris">30.000,- DKK</span>
+        <span class="dage">20 måneder</span>
+        <span class="desc">Grov vold mod en civil borger</span>
+        <button type="button" id="30000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §1.3</span>
+        <span class="grund">Vold mod tjenestemand</span>
+        <span class="pris">30.500,- DKK</span>
+        <span class="dage">20 måneder</span>
+        <span class="desc">Vold mod en civil borger</span>
+        <button type="button" id="30500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §1.4</span>
+        <span class="grund">Grov vold mod tjenestemand</span>
+        <span class="pris">50.000,- DKK</span>
+        <span class="dage">25 måneder</span>
+        <span class="desc">Grov vold mod en civil borger</span>
+        <button type="button" id="50000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §2</span>
+        <span class="grund">Trusler mod civil</span>
+        <span class="pris">12.500,- DKK</span>
+        <span class="dage">5 måneder</span>
+        <span class="desc">Trusler mod civile borgere</span>
+        <button type="button" id="12500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §2.1</span>
+        <span class="grund">Trusler mod tjenestemand</span>
+        <span class="pris">17.500,- DKK</span>
+        <span class="dage">10 måneder</span>
+        <span class="desc">Trusler mod tjenestemand</span>
+        <button type="button" id="17500" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §3</span>
+        <span class="grund">Mordforsøg</span>
+        <span class="pris">32.500,- DKK</span>
+        <span class="dage">15 måneder</span>
+        <span class="desc">Mordforsøg mod civil borger eller tjenestemand</span>
+        <button type="button" id="32500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §4</span>
+        <span class="grund">Manddrab</span>
+        <span class="pris">75.500,- DKK</span>
+        <span class="dage">35 måneder</span>
+        <span class="desc">Manddrab på civil borger eller tjenestemand</span>
+        <button type="button" id="75500" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §5</span>
+        <span class="grund">Dødstrussel</span>
+        <span class="pris">15.500,- DKK</span>
+        <span class="dage">5 måneder</span>
+        <span class="desc">Dødstrussel mod civil borger eller tjenestemand</span>
+        <button type="button" id="15500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §6</span>
+        <span class="grund">Butiksrøveri</span>
+        <span class="pris">55.500,- DKK</span>
+        <span class="dage">25 måneder</span>
+        <span class="desc">Røveri mod kiosk eller tankstation</span>
+        <button type="button" id="55500" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §7</span>
+        <span class="grund">Bankrøveri</span>
+        <span class="pris">250.000,- DKK</span>
+        <span class="dage">60 måneder</span>
+        <span class="desc">Væbnet bankrøveri mod bank</span>
+        <button type="button" id="250000" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §8</span>
+        <span class="grund">Kidnapning</span>
+        <span class="pris">120.000,- DKK</span>
+        <span class="dage">30 måneder</span>
+        <span class="desc">Kidnapning af civil borger eller tjenestemand</span>
+        <button type="button" id="120000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">GL. §9</span>
+        <span class="grund">Flugt fra fængsel</span>
+        <span class="pris">150.000,- DKK</span>
+        <span class="dage">40 måneder</span>
+        <span class="desc">Flugt fra fængsel</span>
+        <button type="button" id="150000" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">GL. §10</span>
+        <span class="grund">Gidseltagning</span>
+        <span class="pris">80.000,- DKK</span>
+        <span class="dage">35 måneder</span>
+        <span class="desc">Gidseltagning til en form for røveri</span>
+        <button type="button" id="80000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">VL. §1</span>
+        <span class="grund">Besiddelse af klasse 1-våben</span>
+        <span class="pris">50.000,- DKK</span>
+        <span class="dage">10 måneder</span>
+        <span class="desc">Besiddelse af semiautomatisk 9mm</span>
+        <button type="button" id="50000" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">VL. §2</span>
+        <span class="grund">Besiddelse af klasse 2-våben</span>
+        <span class="pris">150.000,- DKK</span>
+        <span class="dage">35 måneder</span>
+        <span class="desc">Besiddelse af større våben end semiautomatisk 9mm</span>
+        <button type="button" id="150000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">VL. §3</span>
+        <span class="grund">Besiddelse af stikvåben/slagvåben</span>
+        <span class="pris">15.000,- DKK</span>
+        <span class="dage"></span>
+        <span class="desc">Besiddelse af ulovlige knive eller slagvåben</span>
+        <button type="button" id="15000" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">VL. §4</span>
+        <span class="grund">Våbenhandel</span>
+        <span class="pris">250.000,- DKK</span>
+        <span class="dage">35 måneder</span>
+        <span class="desc">Handel af våben mellem borgere</span>
+        <button type="button" id="250000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">VL. §5</span>
+        <span class="grund">Narko</span>
+        <span class="pris">500,- DKK pr. stk.</span>
+        <span class="dage">0,2 dage pr. stk.</span>
+        <span class="desc">Besiddelse af ulovligt narkotika</span>
+        <button type="button" id="500" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">Økonomi. §1</span>
+        <span class="grund">Bestikkelse</span>
+        <span class="pris">75.000,- DKK</span>
+        <span class="dage">20 måneder</span>
+        <span class="desc">Forsøg på bestikkelse af offentlige ansatte</span>
+        <button type="button" id="75000" class="number">+</button>
+    </div>
+    <div class="list">
+        <span class="para">Økonomi. §2</span>
+        <span class="grund">hvidvaskning</span>
+        <span class="pris">2x sorte penge + 50.000,- DKK</span>
+        <span class="dage">30 måneder</span>
+        <span class="desc">Hvidvaskning af sorte penge</span>
+        <button type="button" id="50000" class="number">+</button>
+    </div>
+    <div class="listh">
+        <span class="para">Økonomi. §3</span>
+        <span class="grund">Korruption</span>
+        <span class="pris">500.000,- DKK</span>
+        <span class="dage">100 måneder</span>
+        <span class="desc">Offentlige ansatte der ulovligt eller uretmæssigt misbruger deres stilling</span>
+        <button type="button" id="500000" class="number">+</button>
+    </div>
+</div>
+<div class="foot">
+    <div class="straf"><span id="straf"></span></div>
+    <div class="bode">Bøde: <span class ="bode2" id="output-value"></span>,- DKK</div>
+    <div class="klip">Klip: <span id="output-value2"></span></div>
+    <button id="clear" class="operator">SLET</button>
+    <button id="+" class="operator">+</button>
+    <button id="lig" class="operator">BEREGN</button>
+    <div class="made">Tablet lavet af MadsKaiser#0001</div>
+</div>
+<div class="foot2">
+    <div class="history">Alle bøder: <span id="history-value"></span></div>
+</div>
+<iframe id="iframe" class="empty" src="about:blank" onload="HandleLocationChange(this, this.contentWindow.location.href)" ></iframe>
+
+<script>
+  function getHistory(){
+    return document.getElementById("history-value").innerText;
+  }
+  function printHistory(num){
+    document.getElementById("history-value").innerText=num;
+  }
+  function getOutput(){
+    return document.getElementById("output-value").innerText;
+  }
+  function printOutput(num){
+    if(num==""){
+      document.getElementById("output-value").innerText=num;
+    }
+    else{
+      document.getElementById("output-value").innerText=getFormattedNumber(num);
+    }	
+  }
+  function getFormattedNumber(num){
+    if(num=="-"){
+      return "";
+    }
+    var n = Number(num);
+    var value = n.toLocaleString("en");
+    return value;
+  }
+  function reverseNumberFormat(num){
+    return Number(num.replace(/,/g,''));
+  }
+  var operator = document.getElementsByClassName("operator");
+  for(var i =0;i<operator.length;i++){
+    operator[i].addEventListener('click',function(){
+      if(this.id=="clear"){
+        printHistory("");
+        printOutput("");
+      }
+      else if(this.id=="backspace"){
+        var output=reverseNumberFormat(getOutput()).toString();
+        if(output){//if output has a value
+          output= output.substr(0,output.length-1);
+          printOutput(output);
+        }
+      }
+      else{
+        var output=getOutput();
+        var history=getHistory();
+        if(output==""&&history!=""){
+          if(isNaN(history[history.length-1])){
+            history= history.substr(0,history.length-1);
+          }
+        }
+        if(output!="" || history!=""){
+          output= output==""?output:reverseNumberFormat(output);
+          history=history+output;
+          if(this.id=="lig"){
+            var result=eval(history);
+            printOutput(result);
+            printHistory("");
+          }
+          else{
+            history=history+this.id;
+            printHistory(history);
+            printOutput("");
+          }
+        }
+      }
+      
+    });
+  }
+  var number = document.getElementsByClassName("number");
+  for(var i =0;i<number.length;i++){
+    number[i].addEventListener('click',function(){
+      var output=reverseNumberFormat(getOutput());
+      if(output!=NaN){ //if output is a number
+        output=output+this.id;
+        printOutput(output);
+          }
+      });
+  }  
+</script>
+</body>
+
+</html>
